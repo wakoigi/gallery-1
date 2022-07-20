@@ -26,9 +26,10 @@ pipeline {
       }
     }
 	stage('Deploy Application') {
-      steps { 
-        sh 'echo "here I will Deploy to Heroku"'
-      }
+      steps {
+              withCredentials([usernameColonPassword(credentialsId: 'akibirio', variable: 'HEROKU_CREDENTIALS' )]){
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/sprintech.git master'
+              }
     }
   }
 }
