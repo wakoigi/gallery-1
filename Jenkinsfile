@@ -7,7 +7,7 @@ pipeline {
   stages { 
     stage('clone repository') {
       steps { 
-        git 'https://github.com/akibirio/gallery.git'
+        git 'https://github.com/akibirio/gallery-1.git'
       }
     }
      stage('Build the project') {
