@@ -28,8 +28,9 @@ pipeline {
 	stage('Deploy Application') {
       steps {
               withCredentials([usernameColonPassword(credentialsId: 'akibirio', variable: 'HEROKU_CREDENTIALS' )]){
-                    sh 'echo "failing too "'
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/sprintech.git master'
               }
     }
   }
+}
 }
