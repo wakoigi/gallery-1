@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Deploy Application') {
       steps {withCredentials([usernameColonPassword(credentialsId: 'wakoigi', variable: 'HEROKU_CREDENTIALS' )]){
-                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/week4ip-koigi.git master'
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/week4ipkoigi.git master'
               }
     }
   }
