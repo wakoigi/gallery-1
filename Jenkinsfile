@@ -25,8 +25,9 @@ pipeline {
       }
     }
     stage('Deploy Application') {
-      steps {
-            sh 'echo "Here We Deploy to heruko"'
+      steps {withCredentials([usernameColonPassword(credentialsId: 'wakoigi', variable: 'HEROKU_CREDENTIALS' )]){
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/week4ip-koigi.git master'
+              }
     }
   }
 }
