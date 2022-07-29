@@ -1,35 +1,32 @@
-pipeline { 
+pipeline {
   agent any
   tools{
-	nodejs 'Node-18'
-  }
-  
-  stages { 
+     nodejs 'Node-18'
+}
+  stages {
     stage('clone repository') {
-      steps { 
-        git 'https://github.com/akibirio/gallery-1.git'
+      steps {
+        git 'https://github.com/wakoigi/gallery-1.git'
       }
     }
      stage('Build the project') {
-      steps { 
+      steps {
         sh 'echo "here we will Build"'
       }
     }
-	stage('Install Dependencies') {
-      steps { 
-        sh 'npm install'
+    stage('Install Dependencies') {
+      steps {
+         sh 'npm install'
       }
     }
     stage('Tests') {
-      steps { 
-        sh 'npm test'
+      steps {
+         sh 'npm test'
       }
     }
-	stage('Deploy Application') {
+    stage('Deploy Application') {
       steps {
-              withCredentials([usernameColonPassword(credentialsId: 'akibirio', variable: 'HEROKU_CREDENTIALS' )]){
-                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/sprintech.git master'
-              }
+            sh 'echo "Here We Deploy to heruko"'
     }
   }
 }
